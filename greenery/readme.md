@@ -6,7 +6,7 @@ from stg_postgress_users;
 
 # Q2: On average, how many orders do we receive per hour? 
 # A2: 7.5 (1DP) ~ 8 (0DP)
-
+```
 -- calculate number of orders created by the hour
 with 
     number_of_orders_per_hour
@@ -23,6 +23,7 @@ select
     sum(order_count)/count(hr_order_created) as avg_number_of_orders_per_hour
 from number_of_orders_per_hour
 ;    
+```
 
 # Q3: on average, how long does an order take from being placed to being delivered? 
 # A3: 3.89 calendar days
