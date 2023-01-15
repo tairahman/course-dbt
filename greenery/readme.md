@@ -1,11 +1,15 @@
 # Q1: How many users do we have? 
 # A1: 130
+
+```
 select 
     count (distinct user_id) 
 from stg_postgress_users;
+```
 
 # Q2: On average, how many orders do we receive per hour? 
 # A2: 7.5 (1DP) ~ 8 (0DP)
+
 ```
 -- calculate number of orders created by the hour
 with 
@@ -27,6 +31,8 @@ from number_of_orders_per_hour
 
 # Q3: on average, how long does an order take from being placed to being delivered? 
 # A3: 3.89 calendar days
+
+```
 -- i.find out how long it takes from order creation till delivery (I picked days below)
 -- ii. get the number of days it takes to deliver an order
 with
@@ -46,8 +52,12 @@ select
     as avg_days_to_deliver 
 from time_to_deliver
 ;
+```
+
 # Q4: How many users have only made one purchase? Two purchases? Three+ purchases?
 # A4: 1 Purchase = 25 | 2 Purchases = 28 | 3 or More Purchase = 71
+
+```
 -- start by categorizing each buyer according to their purchase counts
 with
     buyer_counts
@@ -73,9 +83,12 @@ from buyer_counts
 group by 1
 order by 2 desc    
 ;
+```
 
 # Q5: On average, how many unique sessions do we have per hour? 
 # A5: 16
+
+```
 with
     sessions_to_hour
 as
@@ -91,3 +104,4 @@ select
     sum(number_of_sessions)/count(session_hour) as sessions_per_hour
 from sessions_to_hour
 ;
+```
