@@ -86,7 +86,7 @@ order by 2 desc
 ```
 
 # Q5: On average, how many unique sessions do we have per hour? 
-# A5: 16
+# A5: 16 (O DP)
 
 ```
 with
