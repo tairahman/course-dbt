@@ -3,3 +3,5 @@ version: 2
 models: 
   - name: fact_users
     description: Shows aggregate users stats around orders, products and sessions
+  - name: fact_page_views
+    description: Shows daily number of page views by product 
