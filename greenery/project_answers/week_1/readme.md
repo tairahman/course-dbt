@@ -87,11 +87,8 @@ order by 2 desc
 
 # Q5: On average, how many unique sessions do we have per hour? 
 # A5: 16 (O DP)
-<<<<<<< HEAD:greenery/project_answers/week_1/readme.md
-=======
 
 ```
->>>>>>> main:greenery/readme.md
 with
     sessions_to_hour
 as
