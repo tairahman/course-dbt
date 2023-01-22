@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: dim_products
+    description: Model showing key information around products
+    columns:
+      - name: product_guid
+        tests:
+          - not_null
+          - unique
+
+  - name: dim_users
+    description: Model showing key information around users
+    columns:
+      - name: user_guid
+        tests: 
+          - not_null
+          - unique 
+      - name: user_address
+        tests:
+          - not_null
+      - name: user_market
+        tests:
+          - accepted_values:
+              values: [US,International]
+
+
+      

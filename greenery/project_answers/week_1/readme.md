@@ -2,7 +2,7 @@
 # A1: 130
 select 
     count (distinct user_id) 
-from stg_postgress_users;
+from stg_postgres_users;
 
 # Q2: On average, how many orders do we receive per hour? 
 # A2: 7.5 (1DP) ~ 8 (0DP)
@@ -15,7 +15,7 @@ as
         select 
             date_trunc(hour,created_at_utc) as hr_order_created
             , count(order_guid) as order_count
-        from stg_postgress_orders
+        from stg_postgres_orders
         group by 1
     )
 -- take the total number of orders and divide by hours to get the average    
@@ -35,7 +35,7 @@ as
         select 
             order_guid
             , datediff(day, created_at_utc, delivered_at_utc) as days_to_deliver
-        from stg_postgress_orders 
+        from stg_postgres_orders 
         where 1=1
             and status = 'delivered'
     )
@@ -60,7 +60,7 @@ as
             when count(order_guid) >= 3 then 'Three and more purchases'
             else 'Other'
             end as purchase_count_category
-    from stg_postgress_orders
+    from stg_postgres_orders
     group by 1
     order by 2 desc
     )
@@ -74,7 +74,7 @@ order by 2 desc
 ;
 
 # Q5: On average, how many unique sessions do we have per hour? 
-# A5: 16
+# A5: 16 (O DP)
 with
     sessions_to_hour
 as
@@ -82,7 +82,7 @@ as
         select
             date_trunc(hour, created_at_utc) as session_hour
             , count (distinct session_guid) as number_of_sessions
-        from stg_postgress_events
+        from stg_postgres_events
         group by 1
         order by 2 desc
     )

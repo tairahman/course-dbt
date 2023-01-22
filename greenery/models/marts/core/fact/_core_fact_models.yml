@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: fact_orders
+    description: Model showing orders with related information

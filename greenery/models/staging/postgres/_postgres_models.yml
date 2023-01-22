@@ -1,0 +1,84 @@
+version: 2
+
+models:
+  - name: stg_postgres_addresses
+    description: Addresses info for each users including address, zip, state, and country.
+    columns:
+      - name: address_guid
+        tests:
+          - not_null
+          - unique
+      - name: address_street
+        tests:
+          - not_null
+      - name: address_zip
+        tests:
+          - not_null    
+      - name: address_state
+        tests:
+          - not_null    
+      - name: address_country
+        tests:
+          - not_null                           
+  
+  - name: stg_postgres_events
+    description: Event info, for page visited/action by user
+    columns:
+      - name: event_guid
+        tests:
+          - not_null
+          - unique
+      - name: session_guid
+        tests:
+          - not_null
+      - name: user_guid
+          - not_null
+
+  - name: stg_postgres_order_items
+    description: Items per order, using order and item ids
+    columns:
+      - name: order_guid
+        tests:
+          - not_null
+      - name: product_guid
+        tests:
+          - not_null
+  
+  - name: stg_postgres_orders
+    description: Order info for everything, ids for all other tables
+    columns:
+      - name: order_guid
+        tests:
+          - not_null
+          - unique
+      - name: user_guid
+        tests:
+          - not_null
+      - name: order_total
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: ">0"
+
+  - name: stg_postgres_products
+    description: Product info, including id, name, price, and inventory
+    columns:
+      - name: product_guid
+        tests:
+          - not_null
+          - unique
+
+  - name: stg_postgres_promos
+    description: Promo info, including dicount size and promo status
+    columns:
+      - name: promo_type
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_postgres_users
+    description: User info, including contact info, address id, and date of user creation/update
+    columns:
+      - name: user_guid
+        tests:
+        - unique
+        - not_null

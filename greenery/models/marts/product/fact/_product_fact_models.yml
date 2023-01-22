@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: fact_product
+    description: Shows product level monthly stats by state, including total spend, units ordered and number of discounts

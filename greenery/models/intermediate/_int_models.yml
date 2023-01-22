@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: int_events
+    description: Model that shows users stats per session
+    columns:
+      - name: user_guid
+        tests:
+          - not_null
+      - name: session_guid
+        tests:
+          - not_null
+      - name: session_length_in_minutes
+        tests: 
+          - dbt_utils.expression_is_true:
+              expression: " >= 0"
+

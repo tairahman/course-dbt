@@ -1,0 +1,5 @@
+version: 2
+
+models: 
+  - name: fact_users
+    description: Shows aggregate users stats around orders, products and sessions
