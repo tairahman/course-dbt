@@ -1,5 +1,5 @@
 # Conversion Rate? 62.46%
-# find number of orders and divide by total number of sessions
+- find number of orders and divide by total number of sessions
 ```
 with
     sessions_with_orders
@@ -19,9 +19,9 @@ from sessions_with_orders
 ;
 ```
 # What is conversion rate by product
-# find number of times a product was bought [1]
-# find number of times a product was viewed [2]
-# get conversion rate = [1]/[2]
+i. find number of times a product was bought [1]
+ii. find number of times a product was viewed [2]
+iii. get conversion rate = [1]/[2]
 ```
 with
     orders_with_order_lines
