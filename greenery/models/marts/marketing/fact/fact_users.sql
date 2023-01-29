@@ -17,10 +17,10 @@ as
             , iu.total_spend_minus_shipping
             , iu.total_shipping_spend
             , iu.number_of_orders_with_discounts
-            , ie.add_to_carts
-            , ie.checkout
-            , ie.package_shipped
-            , ie.page_view
+            , ie.add_to_cart_count
+            , ie.checkout_count
+            , ie.package_shipped_count
+            , ie.page_view_count
             , avg(ie.session_length_in_minutes)
             , min(o.created_at_utc) as first_order_created_at_utc
             , max(o.created_at_utc) as latest_order_created_at_utc

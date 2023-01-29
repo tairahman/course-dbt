@@ -16,6 +16,7 @@ as
             , sum(order_quantity) as total_volume_ordered
             , sum(order_quantity * p.product_price) as total_product_spend_without_discounts
             , count_if(promo_type is not null) as number_of_discounts
+            , count(distinct o.order_guid) as number_of_unique_orders
         from {{ ref('stg_postgres_products') }} p
         left join {{ ref('stg_postgres_order_items') }} oi
             on oi.product_guid = p.product_guid
